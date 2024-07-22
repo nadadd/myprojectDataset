@@ -1,0 +1,154 @@
+ID,name,data_collection,publication_date,objective,nb_instances,nb_features,data_link,availability,subject_area,data_source,data_representativeness,sample_balance,divided,missing_values,temporal_factors,nb_citations,citation_link,task,metadata,documentation,features,learning_indicators,informed_consent,transparency,user_control,equity_non_discrimination,security,"                            dealing_faulty_data
+",anonymization,keeping_record,minimal_data_collection,data_lifecycle_management,
+25,SD19,,2022,Factors that influence international students’ decision,207,24,"https://data.mendeley.com/datasets/9gbr7sjk32/1
+",Public,Education,Questionnaire,Structured,False,False,False,False,5,https://www.sciencedirect.com/science/article/pii/S2352340922004346?via%3Dihub,,True,True,,,True,False,False,False,False,False,True,False,False,False,
+26,SD20,2018-2020,2022,Use of Chinese and English by bilingual learners.,"4.2 million 
+English words and 18 million Chinese characters",,https://data.mendeley.com/datasets/gs4ppd7sz3/2,Public,"Social Sciences, Linguistics, Education
+",platform logs,semi-structured,False,False,False,False,1,https://www.sciencedirect.com/science/article/pii/S2352340922007211,,True,True,,,True,True,False,True,False,False,True,False,False,False,
+118,SDD22-4,2018-2021,2022,Impact of COVID-19 on students' generic skills,29662 samples,24,"https://github.com/iportnoy1/Datasets_and_Codes_Generic_Skills_-_Midterms_-_SaberPro_Scores_Unicosta
+",public,Education,,Structured,False,False,False,True,1,"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9374314/
+",,True,True,"Generic Skills
+Test's scores + Midterm Average scores",Performance,False,False,False,False,False,False,True,False,False,False,
+124,"public
+online 
+exam proctoring (OEP) database",2017,2022,effective and efficient use of online exam systems,"40010 images
+24 students",2,"https://cvlab.cse.msu.edu/oep-dataset.html
+",public,Education,camera,Non-structured,False,False,False,False,10,"https://www.sciencedirect.com/science/article/pii/S2667305322000904
+",Classification,True,True,"recorded audio
+and video data samples","Emotional 
+engagement
+Behavioral engagement
+Performance",False,False,False,False,False,False,True,False,False,False,
+147,OULAD,2013-2015,2022,Academic Performance prediction,"173,913 records for students assessment,
+32,593 records for students info,
+7 courses",41,"https://github.com/ElizabethSeidle/OULAD
+
+",Public,Education,LMS logs,Structured,True,False,True,False,180,"https://slejournal.springeropen.com/articles/10.1186/s40561-022-00192-z
+",Classification,False,True,"1.final exam
+score*weight+assessment score*weight
+2.number of clicks, number of interaction daysl
+3.activity execution time
+","1.Performance
+2.Perseverance
+3.Behavioral engagement",False,False,False,False,False,False,True,False,False,False,
+150,Scopus13,2014-2020,2022,"Dropout prediction
+","143,326 records",50,"https://datahub.tec.mx/dataset.xhtml?persistentId=doi:10.57687/FK2/PWJRSJ
+",Public,Education,,Structured,False,False,False,False,14,"https://www.mdpi.com/2306-5729/7/9/119
+",Classification,True,True,"Demographic data
+parents education 
+social conditions
+average score
+Academic history
+student life (participation in activities)","Performance
+",True,False,False,False,False,False,True,False,False,False,
+75,SDD15,,2022,"Recommendations for MOOC users
+","106,574 modules",,,private,Education,"MOOC logs +
+Questionnaire",Non-structured,False,False,False,False,15,"https://www.sciencedirect.com/science/article/abs/pii/S0957417422008375
+",,True,True,,,True,False,False,False,False,False,True,False,False,False,
+77,SDD17,,2022,Support Learners course selection,,,,Private,Education,MOOC reviews,Non-structured,False,False,False,False,15,https://www.sciencedirect.com/science/article/pii/S0957417422015081,NLP,True,False,MOOC reviews,Sentiment analysis,False,False,False,False,False,False,False,False,False,False,
+79,SDD19,,2022,Enhance students self regulation,91 students,,,Private,Education,"LMS logs + 
+interviews",Structured,False,False,False,False,20,"https://www.sciencedirect.com/science/article/abs/pii/S1096751622000112
+",Clustering,True,True,"1) course logins, 
+time spent on viewing rubrics, days access to modules, assignement submission hours, module completion rate
+2) discusiions, number of posts
+3) grades","1) Behavioral engagement
+2) Social engagement
+3)Performance",False,False,False,False,False,False,True,False,False,False,
+83,SDD23,2015-2021,2022,Improve learning expercience,"144,946 reviews",,,Private,Education,,Non-structured,False,False,False,False,17,"https://www.sciencedirect.com/science/article/abs/pii/S1472811722000775
+",,False,False,"students' reviews
+",,False,False,False,False,False,False,True,False,False,False,
+86,SDD26,2021,2022,Suicide prevention and Mental health education,7000 stucents,,,Private,Education,Questionnaire,Structured,False,False,False,False,13,"https://pubmed.ncbi.nlm.nih.gov/34861409/
+",,True,True,"Sociodemographic 
+data
+Suicidal ideation attributes ( frequency, controllability, closeness to attempt, level of distress associated
+with the thoughts and impact on daily functioning)",,True,False,False,False,False,False,True,False,False,False,
+116,SDD22-2,,2022,Distance learning quality assessment,50 teachers,,,Private,Education,Questionnaire,Structured,False,False,False,False,6,"https://www.sciencedirect.com/science/article/pii/S004579062200369X
+","Clustering
+classification",True,True,evaluation index,,False,False,False,False,False,False,True,False,False,False,
+119,SDD22-5,,2022,"Effects of learning analytics dashboard on students' behavioral patterns
+","47,287 interaction 
+logs
+58 students",10,,private,Education,Dashboard logs,Structured,False,False,False,False,3,"https://www.sciencedirect.com/science/article/pii/S1877050922013369
+",,True,True,"1.assignements, quiz, modules and course views
+2.Forum views, posts, creation","1.Behavioral engagement
+2.Social engagement",False,False,False,False,False,False,True,False,False,False,
+120,SDD22-6,,2022,E-learning behavior evaluation,2515 data records,9,,private,Education,MOOC logs,Structured,False,False,False,False,4,"https://www.sciencedirect.com/science/article/pii/S1877050922014934
+",Classification,True,True,"Nbr of visits
+tests scores
+video scores
+scores of autonomous learning
+attendance
+task completion rates","Performance
+Behavioral engagement
+Social engagement",False,False,False,False,False,False,True,False,False,False,
+121,SDD22-7,,2022,Understanding the use of learning management systems by undergraduate university students,"277 students
+",9,,Private,Education,Questionnaire,Structured,False,False,False,False,96,"https://www.sciencedirect.com/science/article/pii/S2667096822000350
+",Classification,False,False,"Demographic data
+Performance expectancy
+Expected effort
+Social Influence
+Behavioral intentions","Performance, 
+behavioral engagement",False,False,False,True,False,False,True,False,False,False,
+122,SDD22-8,,2022,Analyze Factors of Student Mobility,,5,,private,Education,Questionnaire,Non-structured,False,False,False,False,5,"https://www.sciencedirect.com/science/article/pii/S2667096822000362
+","Text analysis 
+NLP",True,True,Articles+tweets,,False,False,False,False,False,False,True,False,False,False,
+123,SDD22-9,,2022,prediction of passing undergraduate admission test,266,10,,private,Education,Questionnaire,Non-structured,True,False,False,False,37,"https://www.sciencedirect.com/science/article/pii/S2667096822000544
+",Classification,True,True,"1.Family situation, living area, relation status, political engagement, drug addiction
+2.Study duration","2. Behavioral 
+engagement",False,False,False,False,False,False,False,False,False,False,
+139,Scopus2,2020,2022,Distance Learning During the COVID-19 Pandemic,"882 participants
+",,,Private,Education,Questionnaire,Non-structured,False,False,False,False,38,"https://academic-publishing.org/index.php/ejel/article/view/2198
+",,False,False,"Demographic data
+Distance Learning resources
+factors hindering distance learning
+Format of institutional materials
+Satisfaction level",,True,False,False,True,False,False,True,False,False,False,
+141,Scopus4,,2022,Factors Affecting the Academic Performance of Students with hearing impairments,224 students,18,,Private,Education,"Questionnaire + 
+platform logs",Semi-structured,False,True,False,False,2,"https://www.iieta.org/journals/ria/paper/10.18280/ria.360408
+",Classification,True,True,"Demographic data
+Prior academic data (scores percentage)
+Deafness related features",Performance,False,False,False,True,False,False,True,False,False,False,
+144,Scopus7,2019-2021,2022,Academic Performance prediction,"4,874 students",,,Private,Education,platform logs,Structured,False,False,False,False,1,"https://ijai.iaescore.com/index.php/IJAI/article/view/22073
+",Regression,True,True,"logs, grades and 
+user files
+Quiz attempts","Performance
+Behavioral engagement
+",False,False,False,False,False,False,False,False,False,False,
+153,Scopus16,,2022,"Sentiment Classification
+of Students’ Feedback on MOOC","21,940 reviews",,,Private,Education,,Semi-structured,False,False,False,False,31,"https://link.springer.com/chapter/10.1007/978-3-030-82199-9_2
+",Classification,True,True,Sentiment polarity,"Emotional
+engagement",False,False,False,False,False,False,False,False,False,False,
+154,Scopus17,2019-2020,2022,"Predict the Final Grade of
+Student","105 students
+7057 records,",46,,Private,Education,Moodle logs,Structured,True,False,False,False,18,"https://www.mdpi.com/2227-7390/10/20/3758
+","Classification
+Regression",True,True,"Final grades
+attendance, course views, assignements submission","Performance
+Behavioral
+engagement",False,False,False,True,False,False,True,False,False,False,
+76,SDD16,,2022,"Course Recommendations
+in MOOCs",,,"http://moocdata.cn/data/MOOCCube#MOOCCube
+",Available on request+ MOOCcube,Education,MOOC,semi-structured,False,False,False,False,11,"https://www.sciencedirect.com/science/article/abs/pii/S0957417422014646
+",Classification,False,True,"MOOC 
+interactions",,False,False,False,False,False,False,False,False,False,False,
+149,Scopus12,2020-2021,2022,"impact of social learning and gamification
+methodologies on learning results",223 students,,,Available on request,Education,MOOC logs,Structured,False,False,True,True,9,"https://onlinelibrary.wiley.com/doi/full/10.1002/cae.22575
+",Classification,True,True,"Scores,
+participation in forums, replies
+task completion
+","Performance
+Social engagement
+Behavioral engagement",False,False,False,False,False,False,True,False,False,False,
+117,SDD22-3,2019-2020,2022,cognitive engagement classification in online courses,"17,715 posts
+2603 learners",,,Available on request,Education,MOOC logs,Non-structured,False,False,False,False,7,"https://www.sciencedirect.com/science/article/pii/S0950705122011467
+",Classification,True,True,discussions,"Cognitive 
+engagement
+Behavioral engagement",False,False,False,False,False,False,False,False,False,False,
+115,EmotionNet,,2022,"measuring students’ interaction with
+distance learning environments during the COVID-19","250 images of 
+337 people",5,,Available on request,Education,Sensors,Non-structured,False,False,False,False,9,"https://www.sciencedirect.com/science/article/pii/S2468502X22001097
+","Sentiment 
+analysis",True,True,"images of facial 
+expressions","Emotional 
+engagement
+Behavioral engagement",False,False,False,False,False,False,True,False,False,False,

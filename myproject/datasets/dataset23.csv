@@ -1,0 +1,172 @@
+ID,name,data_collection,publication_date,objective,nb_instances,features,nb_features,data_link,availability,subject_area,data_source,data_representativeness,sample_balance,divided,missing_values,temporal_factors,nb_citations,citation_link,task,metadata,documentation,learning_indicators,informed_consent,transparency,user_control,equity_non_discrimination,security,dealing_faulty_data,anonymization,keeping_record,minimal_data_collection,data_lifecycle_management,,
+27,SD21,,2023,"Understandings of the theory and practice of CS in the higher education context in Malaysia
+",183,"1.Demographic data, 
+2.grades",18,"https://data.mendeley.com/datasets/54hr8zjx8r/2
+",Public,"Education, Sociolinguistics Variation, Bilingualism
+","Questionnaire
+Classroom observations",semi-structured,False,False,False,False,1,"https://www.sciencedirect.com/science/article/pii/S2352340922009131?via%3Dihub
+",,False,True,2.Performance,True,False,False,True,False,False,True,False,False,False,,
+28,SD22,,2023,"Student perceptions and experiences of quality assurance in Vietnamese universities
+",1323,1.Demographic data,64,"https://data.mendeley.com/datasets/k4cbg4fz6t/2
+",Public,Education,Questionnaire,Structured,False,False,False,False,0,"https://www.sciencedirect.com/science/article/pii/S2352340923004249
+
+",,False,True,,False,False,False,False,False,False,True,False,False,False,,
+29,SD23,2019-2021,2023,s,4765,"1.Grades
+2.Access nulmber, access time, doc access number and time, video and audio time
+3.Messages (reply, post, chat)",32,https://data.mendeley.com/datasets/z62gdty498/1,Public,Education,"The educational web services of the University 
+",Structured,False,False,False,True,0,"https://www.sciencedirect.com/science/article/pii/S2352340923004766
+",classification,False,True,"1.Performance
+2.Behavioral Engagement
+3.Social Engagamenet
+",False,True,True,True,False,False,True,False,False,False,,
+30,SD24,2022-2023,2023,"information about undergraduate students’ attitudes toward e-learning in Indonesia during the COVID-19
+",342,"Demographic information
+internet usage",26,https://data.mendeley.com/datasets/p4k894t6xc/1,Public,"Social Sciences,
+Education
+",Questionnaire,Structured,False,False,False,False,1,"https://www.sciencedirect.com/science/article/pii/S2352340923004894
+",,False,True,,True,False,False,True,False,False,True,False,False,False,,
+129,"Kaggle
+Dataset",,2023,Factors that affect students performance,395 students,"1) Demographic data
+2) Study time
+3) Failures",33,,Public,Education,,structured,False,False,False,False,11,"https://www.sciencedirect.com/science/article/pii/S1877050922022529
+","Classification,
+Clustering",False,True,"Begavioral engagement,
+performance",False,False,False,False,False,False,False,False,False,False,,
+159,"The 7WiseUp
+ behavior dataset",,2023,Student Cheating Detection,110 students,"Logs, grades",440,"http://7wiseup.com/research/e-cheating/data/
+",Public,Education,"Questionnaire, sensor
+
+",Semi-structured,False,False,True,False,9,"https://www.mdpi.com/1424-8220/23/8/4149
+",Classification,False,True,Performance,False,False,False,False,False,False,True,False,False,False,,
+135,"Kaggle 
+Educational dataset.",,2023,Forecasting students’ adaptability in online entrepreneurship education,,"Demographic data,
+Network data",,"https://www.kaggle.com/datasets/mdmahmudulhasansuzan/students-adaptabilitylevel-in-online-education
+","Available 
+on request",Education,LMS logs,structured,False,False,True,False,15,"https://www.sciencedirect.com/science/article/pii/S2590005623000280
+",Classification,False,False,,False,False,False,False,False,False,False,False,False,False,,
+128,,,2023,Personas-based Student Grouping,"10,000 students","Behavioral data,
+Performance data",,,"Available 
+on request",Education,MOOC logs,structured,False,False,False,False,0,https://www.sciencedirect.com/science/article/abs/pii/S0950705123008213,,False,False,"Begavioral engagement,
+performance",False,False,False,False,False,False,False,False,False,False,,
+134,,,2023,"predict anxiety level in university
+students",284 students,,7,"
+","Available 
+on request",Education,Questionnaire,Structured,False,True,False,False,3,"https://www.sciencedirect.com/science/article/pii/S2352914823001867
+",Classification,False,True,,False,False,False,False,False,False,False,False,False,False,,
+4, E-learningDJUST,2019-2021,2023,"Impact of COVID-19
+Student academic progress","9,246 students","1.logs, number of views of activities /resources, nb of submissions 
+2.grades
+3.nb of discussions views, nb of sent messages 
+4.demographic data 
+",,,Private,Education,Questionnaire,Structured,False,False,False,True,4,"https://pubmed.ncbi.nlm.nih.gov/34803236/
+","clustering,
+Regression, 
+",False,True,"1.Performance
+2.Behavioral engagement
+3.Social engagement",False,False,False,False,False,False,True,False,False,False,,
+40,"ESIEE-IT 
+dataset",2021-2022,2023,Academic Performance and engagement,128,"1.Grades, Ranks
+2.Interactions, time spent on the platform, nb of access, 
+3.Nb of attempts",34,,Private,Education,LMS logs  - BlackBoard,Structured,True,False,False,True,1,"https://ieeexplore.ieee.org/document/10101952
+",Classification,True,True,"1.Performance
+2.Behavioral Engagement
+3. Perseverance Score",True,True,False,True,False,False,True,False,True,False,,
+63,SDD3,2019-2020,2023,"Understanding of the engagement and emotional behaviour
+(sentiment and stress)","4553 + 4258
+","1.Number of posts, post length, active days, posting ratio
+2.Sentiment polarity",7,"https://www.adelaide.edu.au/learning/adelaidex/researchers
+",Private,Education,"MOOC logs
+(edX platform)",Structured,False,False,False,False,2,"https://www.sciencedirect.com/science/article/pii/S2666920X22000716
+","Classification
+
+",False,True,"1.Behavioral engagement
+2.Emotional engagement
+",False,False,False,False,False,False,False,False,False,False,,
+64,SDD4,2020-2021,2023,"Early prediction of student
+performance
+",2140 students,"1.Nb of course clicks, resource views,assessments' views and submissions,  total time online
+2.forum clicks, posts
+3.Grades
+",31,,Private,Education,LMS logs,Structured,False,False,False,False,60,"https://www.sciencedirect.com/science/article/pii/S0360131520303067
+","Classification
+Clustering
+",False,True,"1.Behavioral engagement
+2.Social engagement
+3.Performance",False,False,False,False,False,False,True,False,False,False,,
+67,SDD7,2016-2018,2023,"Dropout prediction
+","24,000 students","1.Nbr of exercises done per week, start time, completion time, 
+2.Subscription data",,,Private,Education,MOOC logs,Structured,False,False,False,False,0,"https://www.sciencedirect.com/science/article/pii/S0040162523006947
+",Clustering,False,True,"1.Behavioral engagement
+
+",False,False,False,False,False,False,True,False,False,False,,
+74,SDD14,2016-2018,2023,E portfolio Creation,,"1.Frequency of access, time spent on tasks",,,Private,Education,LMS logs + interviews,Structured,False,False,False,False,10,"https://www.sciencedirect.com/science/article/abs/pii/S0747563222002710
+",,False,False,1.Behavioral engagement,False,False,False,False,False,False,False,False,False,False,,
+78,SDD18,"Coco dataset 
++ OULAD",2023,Final Grade prediction,"8524 students,
+93 courses
+1,235,063 log records
+1342 assignements,
+28,270 submissions"," demographic
+ data, log data, enrollment data, assignement data, submission data",,,Private,Education,Moodle data,Structured,False,False,False,False,19,https://www.sciencedirect.com/science/article/pii/S0957417422019108,"Classification
+clustering",False,True,Performance,False,False,False,False,False,False,True,False,False,False,,
+80,SDD20,2020-2021,2023,"Identifying the role of motivation, perceived learning support, learning engagement and self regulated learning strategies",,"Demographic 
+data",,,Private,Education,"MOOC logs +
+Questionnaire",Semi-structured,False,False,False,False,42,"https://www.sciencedirect.com/science/article/pii/S1096751622000367
+",,False,True,,True,False,False,True,False,False,True,False,False,False,,
+81,SDD21,2021,2023,Students perception of the course,1) 128 students,"Grades, enrollement data","596 
+",,Private,Education,Questionnaire,Semi-structured,False,False,False,False,8,"https://www.sciencedirect.com/science/article/pii/S1096751622000380
+",,False,True,Performance,False,False,False,False,False,False,True,False,False,False,,
+155,"ELIA 101-
+1, and ELIA 101-2)",,2023,Predicting At-Risk Students’ Performance,4772,"1) Course Access
+Avg Minutes
+Course Interactions
+Assignment Submission
+Assessment Access
+Content Access
+Course Item Interactions
+2)Grades",9,,Private,Education,LMS logs,Structured,True,True,False,False,0,"https://thesai.org/Publications/ViewPaper?Volume=14&Issue=6&Code=IJACSA&SerialNo
+",,False,True,"1)Behavioral engagement
+2)Performance",False,False,False,False,False,False,False,False,False,False,,
+137,Springer 2,2019,2023,Academic Performance prediction,"1) 270
+2) 38","Demographic data,
+grades",,,Private,Education,,structured,False,False,False,False,2,"https://link.springer.com/chapter/10.1007/978-3-031-27762-7_19
+",Classification,False,False,Performance,False,False,False,False,False,False,False,False,False,False,,
+82,SDD22,2020,2023,Performance prediction,,,,,Private,Education,Questionnaire,Unstructured,False,False,False,False,7,"https://www.sciencedirect.com/science/article/pii/S1110016823001023
+",Classification,False,True,Performance,False,False,False,True,False,False,False,False,False,False,,
+87,SDD27,,2023,Performance prediction,325 instances,Grades,66,,Private,Education,Questionnaire,semi-structured,False,False,False,False,14,"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9269278/
+","Classification
+Regression",False,True,Performance,True,False,False,True,False,False,False,False,False,False,,
+91,SDD31,2018,2023,Support motivation and academic achievement,,"1) assignements,
+historical data
+2) gardes",,,Private,Education,LMS logs,Structured,False,False,False,False,10,"https://www.sciencedirect.com/science/article/pii/S2666557323000083
+",Regression,False,True,"1) Behavioral engagement
+2) Performance",True,False,False,False,False,False,True,False,False,False,,
+125,,2013-2018,2023,"early student
+dropout prediction","14,391 students and 62,545 feedback
+documents
+","1) Demographic data
+2) Grades
+4) textual feedback",,,Private,Education,"MOOC logs + 
+Questionnaire",semi-structured,False,False,False,False,5,"https://www.sciencedirect.com/science/article/abs/pii/S0167923623000155
+","Classification,
+Clustering",False,True,"2)Performance
+3) Behavioral engageent",False,False,False,False,False,False,False,False,False,False,,
+127,,,2023,Behavioral intention to use e-learning,649,"Sociodemographic
+ data",22,,Private,"Education,
+ Health",Questionnaire,semi-structured,False,False,True,False,26,"https://www.sciencedirect.com/science/article/pii/S235291482200291X
+",Classification,False,True,,True,True,False,True,False,False,True,False,False,False,,
+130,,,2023,Detection and classification of anxiety in university students,"127 engineering
+students","1) Demographic data
+2)Causes and effects of anxiety
+",40,,Private,Education,Questionnaire,unstructured,False,False,False,False,8,"https://www.sciencedirect.com/science/article/pii/S1877050923001321
+",Classification,False,False,,False,False,False,False,False,False,False,False,False,False,,
+131,,,2023,Predicting Students at Risk of Early Dropping Out,110,"1) Interactions, attempts
+assignements
+2)grades",22,,Private,Education,LMS logs,structured,False,False,True,False,0,"https://www.sciencedirect.com/science/article/pii/S1877050923014746
+",Classification,False,True,"Begavioral engagement,
+performance",False,False,False,False,False,False,False,False,False,False,,
+132,SEA-UIS,2016-2019,2023,Early detection of students’ failure,3534 students.,"Academic ,Cognitive,
+Economic,Health, Social features",5,,Private,Education,,structured,False,False,False,False,0,https://www.sciencedirect.com/science/article/pii/S2214716023000271,Classification,False,True,"Begavioral engagement, cognitive engagement
+performance, social engagement",False,False,False,False,False,False,False,False,False,False,,
+133,,2019,2023,Internet-based identification of anxiety,120 students.,Text and facial expressions,,,Private,Education,,,False,True,False,False,0,"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10562914/
+",Classification,False,False,Emotional engagement,True,False,False,False,False,False,True,False,False,False,,
