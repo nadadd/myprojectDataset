@@ -1,11 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from criteria.views import DatasetViewSet
-
-router = DefaultRouter()
-router.register(r'datasets', DatasetViewSet)
+from django.urls import path
+from criteria import views
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('submit-technical-criteria/', views.submit_technical_criteria, name='submit_technical_criteria'),
+    path('submit-ethical-criteria/', views.submit_ethical_criteria, name='submit_ethical_criteria'),
+    path('visualizations-data/', views.get_visualizations_data, name='get_visualizations_data'),
 ]
-

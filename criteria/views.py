@@ -1,79 +1,73 @@
-from rest_framework import viewsets
-from .models import TechnicalCriteria, EthicalCriteria, Dataset
-from .serializers import TechnicalCriteriaSerializer, EthicalCriteriaSerializer, DatasetSerializer
-import math
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 import json
-import logging
-from criteria.management.commands.import_datasets import Command
+from .models import TechnicalCriteria, EthicalCriteria
 
-# Configurer le logger
-logger = logging.getLogger(__name__)
+@csrf_exempt
+@require_POST
+def submit_technical_criteria(request):
+    """
+    Endpoint to receive and store technical criteria data from local storage.
+    """
+    try:
+        data = json.loads(request.body)
+        TechnicalCriteria.objects.all().delete()  # Clear previous data
 
-class TechnicalCriteriaViewSet(viewsets.ModelViewSet):
-    queryset = TechnicalCriteria.objects.all()
-    serializer_class = TechnicalCriteriaSerializer
+        technical_criteria = data.get('technicalCriteriaSelected', [])
+        criteria_objects = [
+            TechnicalCriteria(
+                category=criterion.get('category'),
+                criteria_id=criterion.get('id'),
+                name=criterion.get('name'),
+                priority=criterion.get('priority'),
+                citation_min=criterion.get('citation_min', None),
+                citation_max=criterion.get('citation_max', None),
+                dropdown_value=criterion.get('dropdown_value', None)
+            )
+            for criterion in technical_criteria
+        ]
+        TechnicalCriteria.objects.bulk_create(criteria_objects)
+        return JsonResponse({'status': 'success'})
+    except json.JSONDecodeError:
+        return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
 
-class EthicalCriteriaViewSet(viewsets.ModelViewSet):
-    queryset = EthicalCriteria.objects.all()
-    serializer_class = EthicalCriteriaSerializer
+@csrf_exempt
+@require_POST
+def submit_ethical_criteria(request):
+    """
+    Endpoint to receive and store ethical criteria data from local storage.
+    """
+    try:
+        data = json.loads(request.body)
+        EthicalCriteria.objects.all().delete()  # Clear previous data
 
-class DatasetViewSet(viewsets.ModelViewSet):
-    queryset = Dataset.objects.all()
-    serializer_class = DatasetSerializer
+        ethical_criteria = data.get('ethicalCriteriaSelected', [])
+        criteria_objects = [
+            EthicalCriteria(
+                category=criterion.get('category'),
+                criteria_id=criterion.get('id'),
+                name=criterion.get('name'),
+                priority=criterion.get('priority')
+            )
+            for criterion in ethical_criteria
+        ]
+        EthicalCriteria.objects.bulk_create(criteria_objects)
+        return JsonResponse({'status': 'success'})
+    except json.JSONDecodeError:
+        return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        
-        technical_criteria = self.request.query_params.get('technicalCriteria', '{}')
-        ethical_criteria = self.request.query_params.get('ethicalCriteria', '{}')
-        
-        try:
-            technical_criteria = json.loads(technical_criteria)
-            ethical_criteria = json.loads(ethical_criteria)
-        except json.JSONDecodeError:
-            logger.error("Invalid JSON in criteria")
-            return queryset 
-        
-        # Calcul de la distance pour chaque dataset
-        datasets_with_distance = []
-        for dataset in queryset:
-            distance = self.calculate_euclidean_distance(dataset, technical_criteria, ethical_criteria)
-            logger.info(f"Dataset ID {dataset.id}: Distance {distance}")
-            datasets_with_distance.append((dataset, distance))
-        
-        # Tri des datasets par distance décroissante
-        datasets_with_distance.sort(key=lambda x: x[1], reverse=True)
-        
-        # Retourner les datasets triés par distance
-        sorted_datasets = [dataset for dataset, _ in datasets_with_distance]
-        logger.info(f"Sorted dataset IDs: {[dataset.id for dataset in sorted_datasets]}")
-        return sorted_datasets
-
-    def calculate_euclidean_distance(self, dataset, technical_criteria, ethical_criteria):
-        distance = 0
-        
-        def get_criterion_value(criterion):
-            value = getattr(dataset, criterion, None)
-            logger.info(f"Criterion {criterion}: Value {value}")
-            return Command.parse_value(value)
-
-        for criterion, priority in technical_criteria.items():
-            if hasattr(dataset, criterion):
-                dataset_value = get_criterion_value(criterion)
-                priority = Command.parse_value(priority)
-                logger.info(f"Technical Criterion {criterion}: Dataset Value {dataset_value}, Priority {priority}")
-                distance += math.pow(dataset_value - priority, 2)
-            else:
-                logger.warning(f"Technical Criterion {criterion} not found in dataset model.")
-
-        for criterion, priority in ethical_criteria.items():
-            if hasattr(dataset, criterion):
-                dataset_value = get_criterion_value(criterion)
-                priority = Command.parse_value(priority)
-                logger.info(f"Ethical Criterion {criterion}: Dataset Value {dataset_value}, Priority {priority}")
-                distance += math.pow(dataset_value - priority, 2)
-            else:
-                logger.warning(f"Ethical Criterion {criterion} not found in dataset model.")
-
-        return math.sqrt(distance)
-    
+def get_visualizations_data(request):
+    """
+    Endpoint to get technical and ethical criteria data for visualization.
+    """
+    technical_criteria = list(TechnicalCriteria.objects.values())
+    ethical_criteria = list(EthicalCriteria.objects.values())
+    return JsonResponse({
+        'technicalCriteria': technical_criteria,
+        'ethicalCriteria': ethical_criteria
+    })
