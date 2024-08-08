@@ -98,7 +98,6 @@ const TechnicalCriteriaPage = () => {
   };
 
   const handleDropdownChange = (criterionId, criterionName, value) => {
-    const dropdownKey = criterionName.toLowerCase().replace(/ /g, '_');
     setDropdownSelections({
       ...dropdownSelections,
       [criterionId]: value,
@@ -146,7 +145,6 @@ const TechnicalCriteriaPage = () => {
           <div key={category} className="category">
             <h2>{category}</h2>
             {categories[category].map((criterion) => {
-              const dropdownKey = criterion.name.toLowerCase().replace(/ /g, '_');
               return (
                 <div key={criterion.id} className="criterion">
                   <label>
@@ -174,14 +172,14 @@ const TechnicalCriteriaPage = () => {
                             onChange={(e) => handleCitationsChange('max', e.target.value)}
                           />
                         </div>
-                      ) : dropdownOptions[dropdownKey] ? (
+                      ) : dropdownOptions[criterion.name.toLowerCase().replace(/ /g, '_')] ? (
                         <>
                           <select
                             value={dropdownSelections[criterion.id] || ''}
                             onChange={(e) => handleDropdownChange(criterion.id, criterion.name, e.target.value)}
                           >
                             <option value="">Select {criterion.name}</option>
-                            {dropdownOptions[dropdownKey].map(option => (
+                            {dropdownOptions[criterion.name.toLowerCase().replace(/ /g, '_')].map(option => (
                               <option key={option.value} value={option.value}>{option.label}</option>
                             ))}
                           </select>
@@ -220,4 +218,3 @@ const TechnicalCriteriaPage = () => {
 };
 
 export default TechnicalCriteriaPage;
-

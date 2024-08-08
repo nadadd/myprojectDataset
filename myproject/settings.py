@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'datasetsearch',
+        'NAME': 'databaserecent',
         'USER': 'postgres',
         'PASSWORD': 'nadanada',
         'HOST': 'localhost',

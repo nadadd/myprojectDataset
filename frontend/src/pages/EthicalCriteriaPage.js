@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/CriteriaPage.css';
 
+
 const ethicalCategories = [
   'Informed Consent',
   'Transparency',
@@ -13,15 +14,6 @@ const ethicalCategories = [
   'Keeping a Record',
   'Minimal Data Collection',
   'Data Lifecycle Management',
-  'Metadata',
-  'Documentation',
-  'Features',
-  'Learning indicators',
-  'Relevance and Specificity',
-  'Task',
-  'Missing values',
-  'Divided',
-  'Temporal Factors',
 ];
 
 const EthicalCriteriaPage = () => {

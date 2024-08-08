@@ -1,6 +1,6 @@
 # criteria/forms.py
 from django import forms
-from .models import Dataset
+#from .models import Dataset
 
 class DatasetSearchForm(forms.Form):
     MACHINE_LEARNING_TASKS = [
