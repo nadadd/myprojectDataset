@@ -115,9 +115,6 @@ def get_score(fields,data,priorities):
 class TestView(APIView):
 
     permission_classes = []
-    
-    
-    
 
     def post(self,request,*args,**kwargs):
        
@@ -134,5 +131,4 @@ class TestView(APIView):
         
         
         return Response(ser_data.data,200)
-
 

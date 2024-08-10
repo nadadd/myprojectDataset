@@ -1,217 +1,343 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/CriteriaPage.css';
-
-const categories = {
-  "Category 1 : Data Origin and Documentation": [
-    { id: 1, name: 'Metadata' },
-    { id: 2, name: 'Documentation' },
-    { id: 3, name: 'Data Source' },
-    { id: 4, name: 'Number of Citations' },
-  ],
-  "Category 2 : Data Features and Representativeness": [
-    { id: 5, name: 'Temporal Information' },
-    { id: 6, name: 'Data Representativeness' },
-    { id: 7, name: 'Sample Balance' },
-    { id: 8, name: 'Management of Missing Values' },
-    { id: 9, name: 'Dividing the Dataset' },
-    { id: 10, name: 'Features' },
-  ],
-  "Category 3 : Analysis and Modeling": [
-    { id: 11, name: 'Machine Learning Tasks' },
-    { id: 12, name: 'Learning Indicators' },
-    { id: 13, name: 'Objective' },
-  ],
-};
-
-const dropdownOptions = {
-  'machine_learning_tasks': [
-    { value: 'classification', label: 'Classification' },
-    { value: 'clustering', label: 'Clustering' },
-    { value: 'regression', label: 'Regression' },
-  ],
-  'learning_indicators': [
-    { value: 'performance', label: 'Performance' },
-    { value: 'behavioral_engagement', label: 'Behavioral Engagement' },
-    { value: 'social_engagement', label: 'Social Engagement' },
-    { value: 'perseverance', label: 'Perseverance' },
-    { value: 'cognitive_engagement', label: 'Cognitive Engagement' },
-  ],
-  'features': [
-    { value: 'number_of_attempts', label: 'Number of attempts in quiz or exam' },
-    { value: 'number_of_views', label: 'Number of views' },
-    { value: 'number_of_clicks', label: 'Number of clicks' },
-    { value: 'time_spent', label: 'Time spent' },
-    { value: 'number_of_messages', label: 'Number of messages' },
-    { value: 'grades', label: 'Grades' },
-    { value: 'logins', label: 'Logins' },
-  ],
-  'data_representativeness': [
-    { value: 'structured', label: 'Structured' },
-    { value: 'semi_structured', label: 'Semi-structured' },
-    { value: 'non_structured', label: 'Non-structured' },
-  ],
-  'objective': [
-    { value: 'students_satisfaction', label: 'Students’ satisfaction' },
-    { value: 'impact_of_distance_learning', label: 'Impact of distance learning' },
-    { value: 'improvement_of_distance_learning_quality', label: 'Improvement of distance learning quality' },
-    { value: 'recommendations_in_moocs', label: 'Recommendations in MOOCs' },
-    { value: 'students_preferences', label: 'Students’ preferences' },
-    { value: 'academic_performance', label: 'Academic performance' },
-    { value: 'students_mental_health', label: 'Students’ mental health' },
-    { value: 'impact_of_covid_19_on_students', label: 'Impact of COVID-19 on students' },
-  ],
-};
+import axios from 'axios';
 
 const TechnicalCriteriaPage = () => {
   const navigate = useNavigate();
-  const [selectedCriteria, setSelectedCriteria] = useState({});
-  const [priorities, setPriorities] = useState({});
-  const [dropdownSelections, setDropdownSelections] = useState({});
-  const [numberOfCitations, setNumberOfCitations] = useState({ min: '', max: '' });
+  const [technicalCriteria, setTechnicalCriteria] = useState({
+    objective: '',
+    features: '',
+    data_representativeness: '',
+    sample_balance: false,
+    divided: false,
+    missing_values: false,
+    temporal_factors: false,
+    nb_citations: 0,
+    task: '',
+    metadata: false,
+    documentation: false,
+    learning_indicators: '',
+    priorities: {
+      objective: 'low',
+      features: 'low',
+      data_representativeness: 'low',
+      task: 'low',
+      learning_indicators: 'low',
+      sample_balance: 'low',
+      divided: 'low',
+      missing_values: 'low',
+      temporal_factors: 'low',
+      metadata: 'low',
+      documentation: 'low',
+    },
+  });
 
-  const handleCriteriaChange = (category, criterionId) => {
-    const selectedInCategory = selectedCriteria[category] || [];
-    const isSelected = selectedInCategory.includes(criterionId);
-    const updatedSelected = isSelected
-      ? selectedInCategory.filter(id => id !== criterionId)
-      : [...selectedInCategory, criterionId];
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
 
-    setSelectedCriteria({
-      ...selectedCriteria,
-      [category]: updatedSelected,
-    });
-
-    if (!priorities[criterionId]) {
-      setPriorities({
-        ...priorities,
-        [criterionId]: 0.5,
+    if (type === 'checkbox') {
+      setTechnicalCriteria({ ...technicalCriteria, [name]: checked });
+    } else if (name.startsWith('priority_')) {
+      const criterion = name.replace('priority_', '');
+      setTechnicalCriteria({
+        ...technicalCriteria,
+        priorities: { ...technicalCriteria.priorities, [criterion]: value },
       });
+    } else {
+      setTechnicalCriteria({ ...technicalCriteria, [name]: value });
     }
   };
 
-  const handlePriorityChange = (criterionId, priority) => {
-    setPriorities({
-      ...priorities,
-      [criterionId]: parseFloat(priority),
-    });
-  };
+  const handleSubmit = async () => {
+    try {
+      localStorage.setItem('technicalCriteriaSelected', JSON.stringify(technicalCriteria));
+  
+      const ethicalCriteria = JSON.parse(localStorage.getItem('ethicalCriteriaSelected')) || {};
+      const combinedCriteria = { ...ethicalCriteria, ...technicalCriteria };
 
-  const handleDropdownChange = (criterionId, criterionName, value) => {
-    setDropdownSelections({
-      ...dropdownSelections,
-      [criterionId]: value,
-    });
-
-    if (!priorities[criterionId]) {
-      setPriorities({
-        ...priorities,
-        [criterionId]: 0.5,
-      });
+      console.log('Submitting combined criteria:', combinedCriteria);
+  
+      const response = await axios.post('http://127.0.0.1:8000/get-visualizations-data/', combinedCriteria);
+  
+      console.log('Response from server:', response.data);
+  
+      localStorage.setItem('visualizationsData', JSON.stringify(response.data));
+      navigate('/visualizations');
+    } catch (error) {
+      console.error('Error submitting data:', error.response ? error.response.data : error.message);
+      alert('There was an error submitting your request. Please check the console for more details.');
     }
-  };
-
-  const handleCitationsChange = (type, value) => {
-    setNumberOfCitations({
-      ...numberOfCitations,
-      [type]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    localStorage.setItem('technicalCriteriaSelected', JSON.stringify(
-      Object.keys(selectedCriteria).flatMap(category =>
-        selectedCriteria[category].map(id => ({
-          category,
-          id,
-          name: categories[category].find(c => c.id === id).name,
-          priority: priorities[id],
-          dropdown_value: dropdownSelections[id],
-          citation_min: numberOfCitations.min,
-          citation_max: numberOfCitations.max
-        }))
-      )
-    ));
-    localStorage.setItem('technicalCriteriaPriorities', JSON.stringify(priorities));
-    navigate('/ethical-criteria');
   };
 
   return (
-    <div className="criteria-container">
-      <h1 className="criteria-title">Technical Criteria</h1>
-      <form className="criteria-form" onSubmit={handleSubmit}>
-        {Object.keys(categories).map((category) => (
-          <div key={category} className="category">
-            <h2>{category}</h2>
-            {categories[category].map((criterion) => {
-              return (
-                <div key={criterion.id} className="criterion">
-                  <label>
-                    <input
-                      type="checkbox"
-                      checked={selectedCriteria[category]?.includes(criterion.id) || false}
-                      onChange={() => handleCriteriaChange(category, criterion.id)}
-                    />
-                    {criterion.name}
-                  </label>
-                  {selectedCriteria[category]?.includes(criterion.id) && (
-                    <>
-                      {criterion.name === 'Number of Citations' ? (
-                        <div className="citation-inputs">
-                          <input
-                            type="number"
-                            placeholder="Min"
-                            value={numberOfCitations.min}
-                            onChange={(e) => handleCitationsChange('min', e.target.value)}
-                          />
-                          <input
-                            type="number"
-                            placeholder="Max"
-                            value={numberOfCitations.max}
-                            onChange={(e) => handleCitationsChange('max', e.target.value)}
-                          />
-                        </div>
-                      ) : dropdownOptions[criterion.name.toLowerCase().replace(/ /g, '_')] ? (
-                        <>
-                          <select
-                            value={dropdownSelections[criterion.id] || ''}
-                            onChange={(e) => handleDropdownChange(criterion.id, criterion.name, e.target.value)}
-                          >
-                            <option value="">Select {criterion.name}</option>
-                            {dropdownOptions[criterion.name.toLowerCase().replace(/ /g, '_')].map(option => (
-                              <option key={option.value} value={option.value}>{option.label}</option>
-                            ))}
-                          </select>
-                          <select
-                            value={priorities[criterion.id] || ''}
-                            onChange={(e) => handlePriorityChange(criterion.id, e.target.value)}
-                          >
-                            <option value="">Select Priority</option>
-                            <option value="0.5">Low Priority</option>
-                            <option value="0.7">Medium Priority</option>
-                            <option value="0.9">High Priority</option>
-                          </select>
-                        </>
-                      ) : (
-                        <select
-                          value={priorities[criterion.id] || ''}
-                          onChange={(e) => handlePriorityChange(criterion.id, e.target.value)}
-                        >
-                          <option value="">Select Priority</option>
-                          <option value="0.5">Low Priority</option>
-                          <option value="0.7">Medium Priority</option>
-                          <option value="0.9">High Priority</option>
-                        </select>
-                      )}
-                    </>
-                  )}
-                </div>
-              );
-            })}
+    <div>
+      <h2>Technical Criteria</h2>
+      <form>
+        {/* Existing criteria */}
+        <div>
+          <label>Objective:</label>
+          <input
+            type="text"
+            name="objective"
+            value={technicalCriteria.objective}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_objective"
+                value={technicalCriteria.priorities.objective}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
           </div>
-        ))}
-        <button type="submit" className="submit-button">Next</button>
+        </div>
+        <div>
+          <label>Features:</label>
+          <input
+            type="text"
+            name="features"
+            value={technicalCriteria.features}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_features"
+                value={technicalCriteria.priorities.features}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Data Representativeness:</label>
+          <input
+            type="text"
+            name="data_representativeness"
+            value={technicalCriteria.data_representativeness}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_data_representativeness"
+                value={technicalCriteria.priorities.data_representativeness}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Task:</label>
+          <input
+            type="text"
+            name="task"
+            value={technicalCriteria.task}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_task"
+                value={technicalCriteria.priorities.task}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Learning Indicators:</label>
+          <input
+            type="text"
+            name="learning_indicators"
+            value={technicalCriteria.learning_indicators}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_learning_indicators"
+                value={technicalCriteria.priorities.learning_indicators}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        {/* New criteria */}
+        <div>
+          <label>Sample Balance:</label>
+          <input
+            type="checkbox"
+            name="sample_balance"
+            checked={technicalCriteria.sample_balance}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_sample_balance"
+                value={technicalCriteria.priorities.sample_balance}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Divided:</label>
+          <input
+            type="checkbox"
+            name="divided"
+            checked={technicalCriteria.divided}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_divided"
+                value={technicalCriteria.priorities.divided}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Missing Values:</label>
+          <input
+            type="checkbox"
+            name="missing_values"
+            checked={technicalCriteria.missing_values}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_missing_values"
+                value={technicalCriteria.priorities.missing_values}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Temporal Factors:</label>
+          <input
+            type="checkbox"
+            name="temporal_factors"
+            checked={technicalCriteria.temporal_factors}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_temporal_factors"
+                value={technicalCriteria.priorities.temporal_factors}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Number of Citations:</label>
+          <input
+            type="number"
+            name="nb_citations"
+            value={technicalCriteria.nb_citations}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Metadata:</label>
+          <input
+            type="checkbox"
+            name="metadata"
+            checked={technicalCriteria.metadata}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_metadata"
+                value={technicalCriteria.priorities.metadata}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label>Documentation:</label>
+          <input
+            type="checkbox"
+            name="documentation"
+            checked={technicalCriteria.documentation}
+            onChange={handleChange}
+          />
+          <div>
+            <label>
+              Priority:
+              <select
+                name="priority_documentation"
+                value={technicalCriteria.priorities.documentation}
+                onChange={handleChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <button type="button" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   );

@@ -41,10 +41,10 @@ class DatasetSerializer(serializers.ModelSerializer):
         fields =  '__all__'
 
 
-
 class ResultSerializer(serializers.Serializer):
     
     score = serializers.DecimalField(max_digits=10, decimal_places=2)
     dataset = DatasetSerializer()
     class Meta:
-        fields = ["score","dataset"]    
+        fields = ["score","dataset"]      
+        
