@@ -1,0 +1,56 @@
+.criteria-container {
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Ensure the container has a relative position */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ensure elements are aligned from top to bottom */
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.criteria-table {
+    width: 80%;
+    margin: 20px auto; /* Add margin around the table */
+    border-collapse: collapse;
+}
+
+.criteria-table th, .criteria-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.criteria-table th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.criteria-table td {
+    text-align: center;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #0056b3; /* Add a border for better visibility */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto; /* Ensure the button has space around it and is centered */
+    display: block; /* Ensure the button is a block element */
+}
+
+.submit-button:hover {
+    background-color: darkorange;
+}
+
+.category-header {
+    font-weight: bold;
+    background-color: #f2f2f2;
+    padding: 10px; /* Add padding for spacing */
+    margin-bottom: 20px; /* Add space below to avoid overlap */
+    display: block; /* Ensure it is displayed as a block element */
+}

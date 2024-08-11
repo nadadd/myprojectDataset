@@ -1,3 +1,308 @@
+// import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import axios from 'axios';
+// import { MaterialReactTable } from 'material-react-table';
+// import { Box, Button, TextField,  FormControlLabel, Select, MenuItem } from '@mui/material';
+
+// const TechnicalCriteriaPage = () => {
+//   const navigate = useNavigate();
+//   const [technicalCriteria, setTechnicalCriteria] = useState({
+//     objective: '',
+//     features: '',
+//     data_representativeness: '',
+//     sample_balance: false,
+//     divided: false,
+//     missing_values: false,
+//     temporal_factors: false,
+//     nb_citations: 0,
+//     task: '',
+//     metadata: false,
+//     documentation: false,
+//     learning_indicators: '',
+//     priorities: {
+//       objective: 'low',
+//       features: 'low',
+//       data_representativeness: 'low',
+//       task: 'low',
+//       learning_indicators: 'low',
+//       sample_balance: 'low',
+//       divided: 'low',
+//       missing_values: 'low',
+//       temporal_factors: 'low',
+//       metadata: 'low',
+//       documentation: 'low',
+//     },
+//   });
+
+//   const handleChange = (e) => {
+//     const { name, value, type, checked } = e.target;
+
+//     if (type === 'checkbox') {
+//       setTechnicalCriteria({ ...technicalCriteria, [name]: checked });
+//     } else if (name.startsWith('priority_')) {
+//       const criterion = name.replace('priority_', '');
+//       setTechnicalCriteria({
+//         ...technicalCriteria,
+//         priorities: { ...technicalCriteria.priorities, [criterion]: value },
+//       });
+//     } else {
+//       setTechnicalCriteria({ ...technicalCriteria, [name]: value });
+//     }
+//   };
+
+//   const handleSubmit = async () => {
+//     try {
+//       localStorage.setItem('technicalCriteriaSelected', JSON.stringify(technicalCriteria));
+  
+//       const ethicalCriteria = JSON.parse(localStorage.getItem('ethicalCriteriaSelected')) || {};
+//       const combinedCriteria = { ...ethicalCriteria, ...technicalCriteria };
+
+//       console.log('Submitting combined criteria:', combinedCriteria);
+  
+//       const response = await axios.post('http://127.0.0.1:8000/get-visualizations-data/', combinedCriteria);
+  
+//       console.log('Response from server:', response.data);
+  
+//       localStorage.setItem('visualizationsData', JSON.stringify(response.data));
+//       navigate('/visualizations');
+//     } catch (error) {
+//       console.error('Error submitting data:', error.response ? error.response.data : error.message);
+//       alert('There was an error submitting your request. Please check the console for more details.');
+//     }
+//   };
+
+//   const columns = [
+//     { accessorKey: 'category', header: 'Category' },
+//     { accessorKey: 'criteria', header: 'Criteria' },
+//     { accessorKey: 'definition', header: 'Definition' },
+//     { accessorKey: 'checkbox', header: 'Checkbox' },
+//     { accessorKey: 'priority', header: 'Priority' },
+//     { accessorKey: 'choices', header: 'Choices' },
+//   ];
+
+//   const data = [
+//     {
+//       category: 'Data Origin and Documentation',
+//       criteria: 'Metadata',
+//       definition: 'Information about the data source.',
+//       checkbox: technicalCriteria.metadata ? 'Yes' : 'No',
+//       priority: technicalCriteria.priorities.metadata,
+//       choices: '', // Add choices if applicable
+//     },
+//     {
+//       category: 'Data Origin and Documentation',
+//       criteria: 'Documentation',
+//       definition: 'Documentation provided with the data.',
+//       checkbox: technicalCriteria.documentation ? 'Yes' : 'No',
+//       priority: technicalCriteria.priorities.documentation,
+//       choices: '', // Add choices if applicable
+//     },
+//     // Add other criteria here
+//   ];
+
+//   return (
+//     <div>
+//       <h2>Technical Criteria</h2>
+//       <Box sx={{ mb: 2 }}>
+//         <MaterialReactTable columns={columns} data={data} />
+//       </Box>
+//       <form>
+//         {/* Existing criteria */}
+//         <div>
+//           <TextField
+//             label="Objective"
+//             name="objective"
+//             value={technicalCriteria.objective}
+//             onChange={handleChange}
+//             fullWidth
+//             sx={{ mb: 2 }}
+//           />
+//           <FormControlLabel
+//             control={
+//               <Select
+//                 name="priority_objective"
+//                 value={technicalCriteria.priorities.objective}
+//                 onChange={handleChange}
+//                 fullWidth
+//               >
+//                 <MenuItem value="low">Low</MenuItem>
+//                 <MenuItem value="medium">Medium</MenuItem>
+//                 <MenuItem value="high">High</MenuItem>
+//               </Select>
+//             }
+//             label="Priority"
+//           />
+//         </div>
+//         {/* Add similar fields for other criteria */}
+//         <Button variant="contained" color="primary" onClick={handleSubmit}>
+//           Submit
+//         </Button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default TechnicalCriteriaPage;
+
+
+
+
+// import React, { useState } from 'react';
+// import { useTable } from 'react-table';
+// import axios from 'axios';
+// import { useNavigate } from 'react-router-dom';
+
+// const categories = {
+//   'Data Origin and Documentation': [
+//     { criteria: 'Metadata', definition: 'Metadata definition here' },
+//     { criteria: 'Documentation', definition: 'Documentation definition here' },
+//     { criteria: 'Nb Citations', definition: 'Number of citations definition here' },
+//   ],
+//   'Data Features and Representativeness': [
+//     { criteria: 'Data Representativeness', definition: 'Data Representativeness definition here' },
+//     { criteria: 'Sample Balance', definition: 'Sample Balance definition here' },
+//     { criteria: 'Divided', definition: 'Divided definition here' },
+//     { criteria: 'Missing Values', definition: 'Missing Values definition here' },
+//     { criteria: 'Temporal Factors', definition: 'Temporal Factors definition here' },
+//     { criteria: 'Features', definition: 'Features definition here' },
+//   ],
+//   'Analysis and Modeling': [
+//     { criteria: 'ML Tasks', definition: 'Machine Learning Tasks definition here' },
+//     { criteria: 'Learning Indicators', definition: 'Learning Indicators definition here' },
+//     { criteria: 'Objective', definition: 'Objective definition here' },
+//   ],
+// };
+
+// const TechnicalCriteriaPage = () => {
+//   const navigate = useNavigate();
+//   const [data, setData] = useState(() => {
+//     const initialData = [];
+//     Object.keys(categories).forEach((category) => {
+//       categories[category].forEach((item) => {
+//         initialData.push({
+//           category,
+//           ...item,
+//           checkbox: false,
+//           priority: 'low',
+//         });
+//       });
+//     });
+//     return initialData;
+//   });
+
+//   const handleCheckboxChange = (rowIndex, checked) => {
+//     const updatedData = [...data];
+//     updatedData[rowIndex].checkbox = checked;
+//     setData(updatedData);
+//   };
+
+//   const handlePriorityChange = (rowIndex, priority) => {
+//     const updatedData = [...data];
+//     updatedData[rowIndex].priority = priority;
+//     setData(updatedData);
+//   };
+
+//   const handleSubmit = async () => {
+//     try {
+//       const combinedCriteria = data.reduce((acc, item) => {
+//         acc[item.criteria] = {
+//           checkbox: item.checkbox,
+//           priority: item.priority,
+//         };
+//         return acc;
+//       }, {});
+
+//       console.log('Submitting combined criteria:', combinedCriteria);
+
+//       const response = await axios.post('http://127.0.0.1:8000/get-visualizations-data/', combinedCriteria);
+
+//       console.log('Response from server:', response.data);
+
+//       localStorage.setItem('visualizationsData', JSON.stringify(response.data));
+//       navigate('/visualizations');
+//     } catch (error) {
+//       console.error('Error submitting data:', error.response ? error.response.data : error.message);
+//       alert('There was an error submitting your request. Please check the console for more details.');
+//     }
+//   };
+
+//   const columns = [
+//     { Header: 'Category', accessor: 'category' },
+//     { Header: 'Criteria', accessor: 'criteria' },
+//     { Header: 'Definition', accessor: 'definition' },
+//     {
+//       Header: 'Checkbox',
+//       accessor: 'checkbox',
+//       Cell: ({ row: { index }, value }) => (
+//         <input
+//           type="checkbox"
+//           checked={value}
+//           onChange={(e) => handleCheckboxChange(index, e.target.checked)}
+//         />
+//       ),
+//     },
+//     {
+//       Header: 'Priority Choices',
+//       accessor: 'priority',
+//       Cell: ({ row: { index }, value }) => (
+//         <select
+//           value={value}
+//           onChange={(e) => handlePriorityChange(index, e.target.value)}
+//         >
+//           <option value="low">Low</option>
+//           <option value="medium">Medium</option>
+//           <option value="high">High</option>
+//         </select>
+//       ),
+//     },
+//   ];
+
+//   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
+
+//   return (
+//     <div>
+//       <h2>Technical Criteria</h2>
+//       <table {...getTableProps()}>
+//         <thead>
+//           {headerGroups.map(headerGroup => (
+//             <tr {...headerGroup.getHeaderGroupProps()}>
+//               {headerGroup.headers.map(column => (
+//                 <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+//               ))}
+//             </tr>
+//           ))}
+//         </thead>
+//         <tbody {...getTableBodyProps()}>
+//           {rows.map(row => {
+//             prepareRow(row);
+//             return (
+//               <tr {...row.getRowProps()}>
+//                 {row.cells.map(cell => (
+//                   <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+//                 ))}
+//               </tr>
+//             );
+//           })}
+//         </tbody>
+//       </table>
+//       <button type="button" onClick={handleSubmit}>Submit</button>
+//     </div>
+//   );
+// };
+
+// export default TechnicalCriteriaPage;
+
+
+
+
+
+
+
+
+// {/* <button type="submit" className="submit-button">Submit</button> */}
+
+
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';

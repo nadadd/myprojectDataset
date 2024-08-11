@@ -1,0 +1,130 @@
+/* EthicalCriteriaPage.css */
+.criteria-container {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+.spacing {
+  height: 100px; /* Ajustez la hauteur pour l'espacement désiré */
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.criteria-table {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.criteria-table th, .criteria-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.criteria-table th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.criteria-row td {
+  text-align: center;
+}
+
+.category-cell {
+  vertical-align: middle;
+  background-color: #f9f9f9; /* Optionnel : pour distinguer visuellement les cellules de catégorie */
+}
+
+.next-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 14px;
+}
+
+.next-button:hover {
+  background-color: darkorange;
+  margin-left: 20px;
+}
+
+
+/* .criteria-container {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.category {
+  margin-bottom: 20px;
+}
+
+.category h3 {
+  margin-bottom: 10px;
+}
+
+.criteria-item {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.criteria-item:hover {
+  background-color: #e0e0e0;
+}
+
+.criteria-item span {
+  flex: 1;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.criteria-item select {
+  display: block;
+  margin: 0 10px;
+}
+
+.low-priority {
+  background-color: red;
+}
+
+.medium-priority {
+  background-color: orange;
+}
+
+.high-priority {
+  background-color: green;
+}
+
+.next-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.next-button:hover {
+  background-color: darkorange;
+} */
