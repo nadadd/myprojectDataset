@@ -43,12 +43,12 @@ const EthicalCriteriaPage = () => {
   };
 
   const categories = {
-    informed: ["informed_consent", "anonymization"],
-    dealing: ["dealing_faulty_data", "minimal_data_collection", "data_lifecycle_management"],
-    transparency: ["transparency"],
-    security: ["security"],
-    control: ["user_control", "keeping_record"],
-    equity_and_non_discrimination: ["equity_non_discrimination"]
+    Privacy: ["informed_consent", "anonymization"],
+    Data: ["dealing_faulty_data", "minimal_data_collection", "data_lifecycle_management"],
+    Transparency: ["transparency"],
+    Security: ["security"],
+    User_in_the_loop: ["user_control", "keeping_record"],
+    Equity_and_non_discrimination: ["equity_non_discrimination"]
   };
 
   const handleChange = (e) => {
@@ -72,6 +72,20 @@ const EthicalCriteriaPage = () => {
     navigate("/technical-criteria");
   };
 
+  // Fonction pour obtenir la classe de priorité
+  const getPriorityClass = (priority) => {
+    switch (priority) {
+      case "low":
+        return "low-priority";
+      case "medium":
+        return "medium-priority";
+      case "high":
+        return "high-priority";
+      default:
+        return "";
+    }
+  }; 
+
   return (
     <div className="criteria-container">
       <h2>Ethical Criteria</h2>
@@ -93,7 +107,7 @@ const EthicalCriteriaPage = () => {
                   <tr key={criterion} className="criteria-row">
                     {idx === 0 && (
                       <td rowSpan={criteriaList.length} className="category-cell">
-                        {category.replace(/_/g, " ")}
+                       <strong> {category.replace(/_/g, " ")}</strong>
                       </td>
                     )}
                     <td>{criterion.replace(/_/g, " ")}</td>
@@ -111,6 +125,7 @@ const EthicalCriteriaPage = () => {
                         name={`priority_${criterion}`}
                         value={ethicalCriteria.priorities[criterion]}
                         onChange={handleChange}
+                        className={getPriorityClass(ethicalCriteria.priorities[criterion])}
                       >
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
@@ -124,8 +139,9 @@ const EthicalCriteriaPage = () => {
           </tbody>
         </table>
         <div className="spacing"></div> {/* Conteneur d'espacement */}
-          <div className="buttons-container"></div>
-          <button type="button" className="next-button" onClick={handleNext}>Next</button>
+<div className="buttons-container">
+  <button type="button" className="next-button" onClick={handleNext}>Next</button>
+</div>
       </form>
     </div>
   );

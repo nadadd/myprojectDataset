@@ -8,9 +8,7 @@
     justify-content: flex-start; /* Ensure elements are aligned from top to bottom */
 }
 
-h2 {
-    margin-bottom: 20px;
-}
+
 
 .criteria-table {
     width: 80%;
@@ -39,6 +37,8 @@ h2 {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    border: none;
+    text-decoration: none; /* Enlève le soulignement du lien */
     margin: 20px auto; /* Ensure the button has space around it and is centered */
     display: block; /* Ensure the button is a block element */
 }
@@ -54,3 +54,25 @@ h2 {
     margin-bottom: 20px; /* Add space below to avoid overlap */
     display: block; /* Ensure it is displayed as a block element */
 }
+
+
+
+.next-button:hover {
+    background-color: darkorange;
+  }
+  
+  
+  .priority-low {
+    background-color: red;
+    color: white; /* Texte en blanc pour contraster avec le fond rouge */
+  }
+  
+  .priority-medium {
+    background-color: orange;
+    color: white; /* Texte en blanc pour contraster avec le fond orange */
+  }
+  
+  .priority-high {
+    background-color: green;
+    color: white; /* Texte en blanc pour contraster avec le fond vert */
+  }

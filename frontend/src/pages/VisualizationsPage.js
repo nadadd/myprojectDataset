@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import '../styles/VisualizationsPage.css'; // Import the CSS file
 
 const VisualizationsPage = () => {
   const [dataList, setDataList] = useState([]);
@@ -26,16 +28,27 @@ const VisualizationsPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="visualizations-container">
       <h2>Visualizations</h2>
-      <ul>
-        {dataList.map((item, index) => (
-          <li key={index}>
-            <strong>Dataset Name:</strong> {item.dataset.name}<br />
-            <strong>Score:</strong> {item.score}
-          </li>
-        ))}
-      </ul>
+      <table className="visualizations-table">
+        <thead>
+          <tr>
+            <th>Dataset Name</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dataList.map((item, index) => (
+            <tr key={index}>
+              <td>{item.dataset.name}</td>
+              <td>{item.score}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <Link to="/" className="back-home-button">
+        <button>Back Home</button>
+      </Link>
     </div>
   );
 };

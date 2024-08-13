@@ -3,7 +3,7 @@
   padding: 20px;
   text-align: center;
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 .spacing {
@@ -39,24 +39,42 @@ h2 {
   background-color: #f9f9f9; /* Optionnel : pour distinguer visuellement les cellules de catégorie */
 }
 
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .next-button {
   background-color: #007bff;
   color: white;
-  border: none;
+  border: 1px solid #0056b3;
   padding: 10px 20px;
   border-radius: 5px;
-  margin-left: 10px;
   cursor: pointer;
-  margin-top: 20px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  font-size: 14px;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .next-button:hover {
   background-color: darkorange;
-  margin-left: 20px;
+}
+
+
+.low-priority {
+  background-color: red;
+  color: white; /* Texte en blanc pour contraster avec le fond rouge */
+}
+
+.medium-priority {
+  background-color: orange;
+  color: white; /* Texte en blanc pour contraster avec le fond orange */
+}
+
+.high-priority {
+  background-color: green;
+  color: white; /* Texte en blanc pour contraster avec le fond vert */
 }
 
 

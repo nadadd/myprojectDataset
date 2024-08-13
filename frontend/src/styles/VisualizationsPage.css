@@ -1,60 +1,94 @@
-/* VisualizationsPage.css */
-
 .visualizations-container {
-  max-width: 800px;
-  margin: 0 auto;
   padding: 20px;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
 }
 
-.visualizations-title {
-  font-size: 2rem;
-  font-weight: bold;
+.spacing {
+  height: 100px;
+}
+
+h2 {
   margin-bottom: 20px;
+}
+
+.visualizations-table {
+  width: 70%; /* Réduit la largeur du tableau à 70% du conteneur parent */
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.visualizations-table th,
+.visualizations-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.visualizations-table th {
+  background-color: #f2f2f2;
   text-align: center;
 }
 
-.visualizations-content {
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.visualizations-table td {
+  text-align: center;
 }
 
-.visualizations-content p {
-  font-size: 1.2rem;
-  line-height: 1.6;
+/* Réduire la largeur de la colonne "Dataset Name" */
+.visualizations-table th:first-child, 
+.visualizations-table td:first-child {
+  width: 30%; /* Ajustez ce pourcentage pour réduire davantage la largeur */
 }
 
-.visualizations-content ul {
-  list-style-type: none;
-  padding: 0;
+.visualizations-table th:last-child, 
+.visualizations-table td:last-child {
+  width: 70%; /* La colonne "Score" occupe le reste de l'espace */
 }
 
-.visualizations-content li {
-  background-color: #fff;
-  padding: 15px;
-  margin: 10px 0;
+.next-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
   border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 14px;
 }
 
-.visualizations-content h3 {
-  margin: 0;
-  font-size: 1.5rem;
+.next-button:hover {
+  background-color: darkorange;
+  margin-left: 20px;
 }
 
-.visualizations-content p {
-  margin: 10px 0 0;
-  font-size: 1rem;
-  color: #333;
+.back-home-button  {
+  text-decoration: none; /* Enlève le soulignement du lien */
 }
 
-@media (max-width: 768px) {
-  .visualizations-container {
-    padding: 10px;
-  }
+.back-home-button {
+  display: block;
+  margin-top: 20px;
+  text-decoration: none; /* Enlève le soulignement du lien */
+  margin-bottom: 20px; /* Espace sous le bouton */
+  text-align: center;
+}
 
-  .visualizations-content {
-    padding: 15px;
-  }
+.back-home-button button {
+  background-color: #007bff;
+    color: white;
+    border: 1px solid #0056b3; /* Add a border for better visibility */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto; /* Ensure the button has space around it and is centered */
+    display: block;
+}
+
+.back-home-button button:hover {
+  background-color: darkorange;
 }

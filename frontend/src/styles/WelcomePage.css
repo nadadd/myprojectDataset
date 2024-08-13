@@ -1,59 +1,115 @@
+/* Conserver la disposition avec l'image à gauche et le texte à droite */
 .welcome-container {
-    text-align: left;
-    padding: 20px;
-  }
- 
-  .welcome-content {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-  }
-
-.title {
-   margin-left: 150px;
-   padding: 20px;
+  text-align: left;
+  padding: 40px;
+  background: linear-gradient(to right, #e0e5e8, #f4f7f9); /* Dégradé de fond doux */
+  color: #333; /* Couleur de texte plus sombre pour un meilleur contraste */
+  font-family: 'Arial', sans-serif; /* Police moderne et lisible */
 }
 
-  .welcome-content p {
-    margin: 0 10px;
-  }
+.welcome-content {
+  display: flex;
+  align-items: flex-start; /* Aligner verticalement le texte et l'image */
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 10px; /* Bords arrondis pour la section de contenu */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Ombre plus marquée pour la section de contenu */
+  background: #ffffff; /* Fond blanc pour le contenu */
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #2c3e50; /* Couleur sombre pour le titre */
+  margin-bottom: 20px;
+}
+
+.welcome-text {
+  flex: 1; /* Permet au texte de prendre toute la place disponible à côté de l'image */
+  padding-right: 20px; /* Espacement entre le texte et l'image */
+}
+
+.welcome-text ul {
+  padding-left: 20px; /* Espacement pour les listes */
+  padding-right: 30px;
+  margin: 20px 0; /* Espacement vertical pour les listes */
+}
+
+.welcome-text li {
+  margin-bottom: 15px; /* Espacement entre les éléments de liste */
+}
+
+.welcome-text p {
+  font-size: 1.2rem;
+  margin: 0;
+  line-height: 1.8; /* Espacement de ligne amélioré */
+  color: #555; /* Couleur de texte légèrement plus claire pour une meilleure lisibilité */
+}
+
+.reference-text {
+  margin-top: 20px;
+  font-size: 0.9rem;
   
+  color: #777; /* Couleur légèrement plus claire pour le texte de référence */
+  line-height: 1.5; /* Espacement de ligne pour une meilleure lisibilité */
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Permet de passer à la ligne sur les petits écrans */
+  margin-top: 40px;
+}
+
+.card, .cardvis {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 180px; /* Largeur des cartes légèrement augmentée */
+  color: #333;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Ombre subtile pour les cartes */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  background-color: #007bff; /* Couleur principale au survol */
+  color: #ffffff;
+  transform: scale(1.05); /* Agrandissement léger au survol */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Ombre plus marquée au survol */
+}
+
+.cardvis {
+  background-color: #007bff; /* Couleur principale pour la carte de visualisations */
+  color: #ffffff;
+}
+
+.cardvis:hover {
+  background-color: #0056b3; /* Teinte plus sombre au survol */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Ombre plus marquée au survol */
+}
+
+.card .icon {
+  font-size: 1.6rem; /* Taille de l'icône augmentée pour une meilleure visibilité */
+  margin-bottom: 10px; /* Espacement entre l'icône et le texte */
+}
+
+@media (max-width: 768px) {
+  .welcome-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .welcome-content img {
-    width: 600px; 
-    margin-left: 20px;
+    width: 100%; /* Adaptation de l'image pour les petits écrans */
   }
-  
+
   .cards {
-    display: flex;
-    justify-content: center;
-    gap: 200px;
-    margin-top: 50px;
+    gap: 10px;
   }
-  
-  .card {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 150px; 
-    color: black;
-    text-align: center;
-
-  }
- 
-  .cardvis {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 5px;
-    width: 150px; 
-    text-align: center;
-
-  }  
-  
-  .card:hover {
-    background-color:  navy;
-  }
-
-  .card .icon {
-    margin-right: 10px;   
-  }
+}
+.souligne {
+  text-decoration: none; 
+}
