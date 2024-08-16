@@ -156,7 +156,7 @@ const TechnicalCriteriaPage = () => {
             </tr>
             <tr>
               <td>Number of Citations</td>
-              <td>...</td>
+              <td>Evaluates the popularity and recognition of the dataset in the scientific community.</td>
               <td>
                 <input
                   type="checkbox"
@@ -455,7 +455,7 @@ const TechnicalCriteriaPage = () => {
             </tr>
             <tr>
               <td>Objective</td>
-              <td>...</td>
+              <td>The specific purposes for which the dataset was created.</td>
 
               <td>
                 <input
